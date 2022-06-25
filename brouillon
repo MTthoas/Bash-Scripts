@@ -1,0 +1,7 @@
+  IFS=':'
+    read -ra ARR <<< "$i"
+
+    for (( n=0; n < ${#ARR[*]}; n++ ))  
+    do  
+    echo "${ARR[1]}" 
+    done  

@@ -9,15 +9,32 @@ else
     IFS=':'
     read -ra ARR <<< "$i"
 
-    for (( n=0; n < ${#ARR[*]}; n++ )) 
+    for (( n=0; n < ${#ARR[*]}; n++ ))  
     do  
     if [[ $n = 1 ]]; then
+
+    len=${#ARR[@]}
+    nom="${ARR[1]}"
+    prenom="${ARR[2]}"
+
         egrep "^$ARR[1]" /etc/passwd >/dev/null
         if [ $? -eq 0 ]; then
             echo "$ARR[1]exists!"
             exit 15
         else
-            sudo useradd -m -p "$ARR[2]" "$ARR[1]"
+
+            min=2;
+            max=$(($len-2))
+
+            between=$(($max-$min))
+
+            for (( n=0; n < $between; n++ ))  
+            do  
+
+            echo "test"
+
+            done 
+
             [ $? -eq 0 ] && echo "User has been added to system!" || echo "Failed to add a user!"
         fi
     fi

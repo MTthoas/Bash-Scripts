@@ -36,20 +36,17 @@ else
                 
                     if grep -q -E "^${ARR[3]}:" /etc/group
                         then
-                            echo ${ARR[3]}
-                            sudo useradd -N "${ARR[0]}" -c "${ARR[1]},${ARR[2]}"
+                            sudo useradd -N -m "${ARR[0]}" -c "${ARR[1]},${ARR[2]}"
                             sudo usermod -a -G "${ARR[3]}" "${ARR[0]}"
                         else
-                            echo ${ARR[0]}
                             sudo groupadd "${ARR[3]}" 
-                            sudo useradd -N "${ARR[0]}" -c "${ARR[1]},${ARR[2]}"
+                            sudo useradd -N -m "${ARR[0]}" -c "${ARR[1]},${ARR[2]}"
                             sudo usermod -a -G "${ARR[3]}" "${ARR[0]}"
                     fi
 
             else
 
             index=$((3+$i))
-            echo ${ARR[$index]}
 
                 if grep -q -E "^${ARR[$index]}:" /etc/group
                 then
@@ -61,12 +58,16 @@ else
                     chage -d 0 "${ARR[0]}"
 
 
-                    #for((y=0;y<10;y++))
-                    #do
+                    for((y=0;y<10;y++))
+                    do
+                        random=$RANDOM                                            
+                        (( perm = random % 512 ))         
+                        printf -v octperm "%04o" $perm  
 
-                        #head -c $RANDOM </home/${ARR[0]}> "$RANDOM.txt"
+                        file=/home/"${ARR[0]}"/$random.txt                   # not sure if you meant to name it after the number
+                        echo $rnd > $file
 
-                        #done
+                    done
 
                     echo "User has been added to system!"
                 fi

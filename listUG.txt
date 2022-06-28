@@ -1,0 +1,14 @@
+/usr/sbin/unix_chkpwd
+/usr/sbin/pppd
+/usr/libexec/polkit-agent-helper-1
+/usr/libexec/camel-lock-helper-1.2
+/usr/libexec/spice-client-glib-usb-acl-helper
+/usr/share/code/chrome-sandbox
+/usr/bin/su
+/usr/bin/newgrp
+/usr/bin/ssh-agent
+/usr/bin/wall
+/usr/bin/passwd
+/usr/bin/crontab
+/usr/lib/snapd/snap-confine
+/usr/lib/xorg/Xorg.wrap

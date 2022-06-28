@@ -69,7 +69,7 @@ else
 
                     done
 
-                    echo "User has been added to system!"
+                    echo "User ${ARR[0]} has been added to system!"
                 fi
                
 

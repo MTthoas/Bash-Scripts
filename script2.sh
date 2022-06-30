@@ -21,10 +21,6 @@ done
 
 printf "\n\n"
 
-# for userSpace in "${!array[@]}"; do
-#     printf "%s\t%s\n" "$userSpace" "${array[$userSpace]}"
-# done
-
 printf "\n\n"
 
 new_array=("${array[1]}")
@@ -33,14 +29,6 @@ array_copy=("${array[@]}")
 
 len=${#array_copy[*]}
 
-# echo Avant le tri pair/impair
-# printf "\n"
-
-# for ((i = 0; i < ${len}; i++)); do
-#     echo "${array_copy[i]}"
-# done
-
-# printf "\n\n"
 
 sorted="false"
 while [ $sorted == "false" ]; do
@@ -73,15 +61,11 @@ printf "\n\n"
 # printf "Apres le tri pair/impair\n"
 
 for ((i = 0; i < ${len}; i++)); do
-    
+
     array_copy[i]=$(echo "${array_copy[i]}" | awk -F";" '{print $3" utilise "$2""}')
 done
 sudo touch /home/human_user_space.txt
 sudo chmod 777 /home/human_user_space.txt
 sudo printf "%s\n" "${array_copy[@]}" >/home/human_user_space.txt
 
-# A rajouter dans le /etc/bash.bashrc
-# head -n 5 /home/human_user_space.txt
-# if [ $(du -sb0 $HOME | awk '{print $1}') -ge "104857600" ]; then
-#     echo Attention votre espace personnel utilise plus de 100Mo
-# fi
+#
